@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HIVE2</title>
+    <link href="/static/jstree.style.min.css" rel="stylesheet">
+    <link href="/static/style.css" rel="stylesheet">
+    <link rel="shortcut icon" type="image/x-icon" href="/static/favicon.ico">
+    <script src="https://use.fontawesome.com/76b18e051a.js"></script>
+    <script src="/static/clipboard.min.js"></script>
+    <script src="/static/hive2.js"></script>
+
+ </head>
+   <body>
+	    <header>
+           <div class="hdr-container">
+              <a id="logo" class="hdr-item"><img src="/static/HiveLogo.jpg" alt="HIVE logo"/></a>
+              <span class="hdr-item">Helping Interdisciplinary<br> Vocabulary Engineering</span>
+              <a class="hdr-item" href="http://cci.drexel.edu/mrc/"><img id="mrclogo" src="/static/MRClogo.png" alt="MRC logo"/></a>
+           </div>
+        </header>
+        <nav class="main-nav">
+            <ul>
+                <li id="vocNav"><a href="/index">Vocabularies</a></li>
+                <li id="searchNav"><a href="/search">Search</a></li>
+                <li id="indexNav"><a href="/indexer">Index</a></li>
+            </ul>
+        </nav>
+        <div id="wrapper">
+           <section id="vocheader">
+              <p class="intro">Search one or more vocabularies for a term or phrase.</p>
+              <div id="vocsels">
+                  <p><span class="step">1</span>Select vocabularies</p>
+                 <ul id="voclist">
+                    <template id="checkbox">
+                       <li class="ckbox">
+                          <input type="checkbox">
+                          <label></label>
+                       </li>
+                    </template>
+                 </ul>
+              </div>
+              <p id="novocsel" class="usermsg"></p>
+              <div><span class="step">2</span> Enter search term
+                 <input type="text" id="searchterm" name="searchterm" size="30">
+                 <input type="button" id="search-button" value="Search">
+                 <span id="noconcept" class="usermsg"></span>
+              </div>
+           </section>
+
+           <div id="flex-container">
+              <section id="termlist"></section>
+              <div id="details">
+                  <section id="conceptview">
+                      <button id="close-button" title="Close"><i class="fa fa-times fa-2x"></i></button>
+                      <div id="formatselection">
+                         <input type="button" id="list-button" value="List" class="selected-button">
+                         <input type="button" id="json-button" value="JSON-LD" class="unselected-button">
+                         <input type="button" id="skos-button" value="SKOS RDF/XML" class="unselected-button">
+                         <input type="button" id="dc-button" value="Dublin Core" class="unselected-button">
+                         <input type="button" id="xml-button" value="XML" class="unselected-button">
+                         <input type="button" id="save-button" value="Save selections in metadata format" style="display: none;">
+                      </div>
+                      <div id="conceptlistview">
+                         <p><span class="conceptattr">Preferred label </span>
+                            <span id="preflabel"></span></p>
+                         <p><span class="conceptattr">URI </span>
+                            <span id="uri"></span></p>
+                         <p><span class="conceptattr">Alternate label </span>
+                            <span id="altlabel"></span></p>
+                         <p><span class="conceptattr">Notes label </span>
+                            <span id="notes"></span></p>
+                         <p><span class="conceptattr">Broader </span>
+                            <span id="broader"></span></p>
+                         <p><span class="conceptattr">Narrower </span>
+                            <span id="narrower"></span></p>
+                         <p><span class="conceptattr">Related </span>
+                            <span id="related"></span></p>
+                      </div>
+                  </section>
+                 <div id="metadataModal" class="modal">
+                       <div class="modal-content">
+                          <span class="metaControls">
+                             <i id="copyClipboard" class="fa fa-clipboard fa-2x" aria-hidden="true"
+                                title="Copy to clipboard" data-clipboard-action="copy" data-clipboard-target="#metadataText"></i>
+                              <i class="close fa fa-times fa-2x" aria-hidden="true" title="Close window" ></i>
+                          </span>
+                          <pre id="metadataText"></pre>
+                       </div>
+                       <script>new Clipboard('#copyClipboard'); </script>
+                 </div>
+              </div>
+           </div>
+        </div>
+      <footer>Metadata Research Center, College of Computing & Informatics at Drexel University</footer>
+      <script>
+         var vocobj = null;
+         var currentConceptJson = '';
+         var currentVoc = '';
+         var formatView = 'list';  // other values: jsonld, skos, dublin core, xml
+         var selectedConceptsByVoc = new Map();
+         var modal = document.querySelector('#metadataModal');
+         var vocs = [];
+
+         addEventListenersForFormatSelection();
+
+         var xhr = new XMLHttpRequest();
+         xhr.responseType = 'text';
+         xhr.onreadystatechange = function() {
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+               if (xhr.status === 200) {
+                  vocobj = JSON.parse(xhr.response);
+                  vlen = vocobj.vocs.length;
+                  if (vlen > 0) {
+                     for (i=0; i<vlen; i++)  {
+                        voc = vocobj.vocs[i].name;
+                        vocs.push(voc);
+                     }
+                     vocs.sort();
+                     searchForConcept();
+                  }
+               }
+            }
+         }
+         xhr.open('GET', "/getAvailableVocabularies", true);   // async=false
+         xhr.send(null);
+      </script>
+   </body>
+</html>

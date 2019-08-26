@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HIVE2</title>
+     <link href="/static/style.css" rel="stylesheet">
+     <link rel="shortcut icon" type="image/x-icon" href="/static/favicon.ico">
+     <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+     <!-- Reference for icon replacement in most recent version:  https://fontawesome.com/how-to-use/svg-with-js
+        This script is needed to change the class for an icon when clicked, i.e., from plus to minus.  -->
+     <script>FontAwesomeConfig = { autoReplaceSvg: 'nest' } </script>
+     <script src="/static/clipboard.min.js"></script>
+ </head>
+   <body>
+	    <header>
+           <div class="hdr-container">
+              <a id="logo" class="hdr-item"><img src="/static/HiveLogo.jpg" alt="HIVE logo"/></a>
+              <span class="hdr-item">Helping Interdisciplinary<br> Vocabulary Engineering</span>
+              <a class="hdr-item" href="http://cci.drexel.edu/mrc/"><img id="mrclogo" src="/static/MRClogo.png" alt="MRC logo"/></a>
+           </div>
+        </header>
+        <nav class="main-nav">
+            <ul>
+                <li id="vocNav"><a href="/index">Vocabularies</a></li>
+                <li id="searchNav"><a href="/search">Search</a></li>
+                <li id="indexNav"><a href="/indexer">Index</a></li>
+            </ul>
+        </nav>
+        <div id="wrapper">
+            <section id="main"></section>
+            <section id="vocheader"></section>
+               <table id="voctable">
+                  <thead>
+                     <tr>
+                         <th>Vocabulary</th>
+                         <th>Short name</th>
+                         <th class="numitem">Concepts</th>
+                         <th class="numitem">Last Updated</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                  <template id="vocrow">
+                      <tr>
+                          <td></td>
+                          <td></td>
+                          <td class="numitem"></td>
+                          <td class="numitem"></td>
+                      </tr>
+                  </template>
+
+                  </tbody>
+               </table>
+
+            <div id="flex-container">
+               <div id="hierarchy">
+                  <section id="browseBySearch"> Browse subjects beginning with
+                     <input type="text" id="browsesearchterm" name="browsesearchterm" size="30">
+                     <input type="button" id="browsesearch-button" value="Search">
+                     <span id="noconcept" class="usermsg"></span>
+                     <p id="toomanyresults">If your search returns more results than can be displayed, only the first 100 will be shown.</p>
+                  </section>
+                  <section id="treeview">
+                  </section>
+               </div>
+               <div id="details">
+                  <section id="conceptview">
+                      <button id="close-button" title="Close"><i class="fa fa-times fa-2x"></i></button>
+                      <div id="formatselection">
+                         <input type="button" id="list-button" value="List" class="selected-button">
+                         <input type="button" id="json-button" value="JSON-LD" class="unselected-button">
+                         <input type="button" id="skos-button" value="SKOS RDF/XML" class="unselected-button">
+                         <input type="button" id="dc-button" value="Dublin Core" class="unselected-button">
+                         <input type="button" id="xml-button" value="XML" class="unselected-button"><input type="button" id="save-button" value="Save selections in metadata format" style="display: none;">
+                      </div>
+                      <div id="conceptlistview">
+                         <p><span class="conceptattr">Preferred label </span>
+                            <span id="preflabel"></span></p>
+                         <p><span class="conceptattr">URI </span>
+                            <span id="uri"></span></p>
+                         <p><span class="conceptattr">Alternate label </span>
+                            <span id="altlabel"></span></p>
+                         <p><span class="conceptattr">Notes label </span>
+                            <span id="notes"></span></p>
+                         <p><span class="conceptattr">Broader </span>
+                            <span id="broader"></span></p>
+                         <p><span class="conceptattr">Narrower </span>
+                            <span id="narrower"></span></p>
+                         <p><span class="conceptattr">Related </span>
+                            <span id="related"></span></p>
+                      </div>
+                  </section>
+                  <div id="metadataModal" class="modal">
+                     <div class="modal-content">
+                        <span class="metaControls">
+                           <i id="copyClipboard" class="fa fa-clipboard fa-2x" aria-hidden="true"
+                                title="Copy to clipboard" data-clipboard-action="copy" data-clipboard-target="#metadataText"></i>
+                           <i class="close fa fa-times fa-2x" aria-hidden="true" title="Close window" ></i>
+                        </span>
+                        <pre id="metadataText"></pre>
+                     </div>
+                     <script>new Clipboard('#copyClipboard'); </script>
+                  </div>
+               </div>
+            </div>
+
+         </div>
+      <footer>Metadata Research Center, College of Computing & Informatics at Drexel University</footer>
+        <script src="/static/hive2.js"></script>
+        <script>
+         var vocobj = null;
+         var currentConceptJson = '';
+         var currentVoc = '';
+         var formatView = 'list';  // other values: jsonld, skos, dublin core, xml
+         var selectedConceptsByVoc = new Map();
+         document.querySelector("#browseBySearch").style.display = "none";
+         var vocs = [];
+         treeMap = new Map();
+
+         var xhr = new XMLHttpRequest();
+         xhr.responseType = 'text';
+         xhr.onreadystatechange = function() {
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+               if (xhr.status === 200) {
+                  generateVocList(xhr.response);
+                  addEventListenersForFormatSelection();
+               }
+            }
+         }
+         xhr.open('GET', "/getAvailableVocabularies", true);   // async=false
+         xhr.send(null);
+      </script>
+   </body>
+</html>
