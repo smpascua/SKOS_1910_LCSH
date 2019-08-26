@@ -1,0 +1,534 @@
+body, h1, h2, h3, h4{
+ padding: 0;
+ margin: 0;
+ font: normal 100% Verdana, Georgia, Helvetica, Times, serif;
+}
+body {
+  background-color: #FFF;
+  margin: 0 auto;
+  width: 100%;
+}
+#wrapper { width: 90%;}
+
+.hdr-container, #voc_container {
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+   flex-wrap: wrap;
+   width: 100%;
+}
+
+.vocbox {
+   display: flex;
+   flex-direction: column;
+   background-color: powderblue;
+}
+
+#vocheader {
+   margin-left: 4%;
+   margin-top: 2%;
+}
+
+.vocdetails {
+   display: flex;
+   flex-direction: column;
+   background-color: peachpuff;
+}
+
+.hdr-item  {
+   margin: 0 2% 1% 2%;
+   padding: .625em 0 0 .625em;
+   font-size: 1.7em
+}
+#mrclogo {
+   height: 3.375em;
+   padding: .938em;
+}
+header {
+   margin: 0;
+   padding: 0;
+}
+.intro {
+   font-size: 1.1em;
+}
+.main-nav ul {
+    background-color: #3fb0ac;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    list-style: none;
+  }
+
+.main-nav li {
+    background-color: #3fb0ac;
+    padding: 0.5em;
+    font-size: 1.3em;
+ }
+.main-nav  a {
+    max-width: 8.75em;
+    font-weight: bold;
+    text-decoration: none;
+    display: flex;
+    color: white;
+}
+.main-nav ul li:hover {
+   background-color:  #d9f1f0;
+}
+.voclink {
+   color: #3fb0ac;
+   font-size: 1.1em;
+   text-decoration: none;
+}
+.voclink:hover {
+   background-color: whitesmoke;
+}
+#vocsels ul {
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: flex-start;
+   list-style: none;
+}
+#vocsels {
+   margin-bottom: 1em;
+}
+.ckbox {
+   padding: .3em;
+   width: 14em;
+}
+
+input[type=checkbox] + label {
+  color: darkslategray;
+
+}
+input[type=checkbox]:checked + label {
+  color: #3fb0ac;
+  font-style: italic;
+  font-weight: 600;
+}
+
+#docurl, #searchterm, #browsesearchterm {
+   border-radius: .5em;
+   border: .063em solid #3fb0ac;
+   padding: .125em;
+   margin: 1em;
+   font-size: 1.1em;
+}
+
+#index-button, #search-button, #browsesearch-button {
+   background-color: #3fb0ac;
+   border: none;
+   border-radius: .625em;
+   color: white;
+   padding: .3em .938em;
+   margin: 0 1em;
+   text-align: center;
+   font-size: 1.1em;
+}
+#index-button { margin: 1em 0; }
+#fileform, #urlLabel, #index-button, #parms { margin-left: 2em; }
+#noconcept { padding-left: 30px;}
+
+#viewselection {
+   display: none;
+   margin: .5em 5%;
+   justify-content: space-around;
+}
+.iconbox {
+   margin: .5em;
+}
+#view, #order {
+   display: flex;
+   flex-wrap: wrap;
+   flex-direction: row;
+   margin: 0;
+   padding: 0;
+   background-color: whitesmoke;
+   color: black;
+   text-align: center;
+   border: .063em solid lightgrey;
+   background-color: whitesmoke;
+   border-radius: .625em;
+   list-style: none;
+}
+.viewlabel {
+   margin-left: 0.4em;
+   text-align: center;
+   font-size: 1.1em;
+}
+#viewselection ul li:hover {
+   font-weight: bold;
+}
+
+#cloudview-button { background-color: #cadeeb; }
+#rankorder-button { background-color: #cadeeb; }
+
+.unselected-button {
+   background-color: #3fb0ac;
+   border: none;
+   border-radius: .625em;
+   color: white;
+   padding: .313em .938em;
+   margin: .313em;
+   text-align: center;
+   font-size: 1em;
+}
+.selected-button {
+   background-color: #3fb0ac;
+   border: none;
+   border-radius: .625em;
+   color: black;
+   padding: .313em .938em;
+   margin: .313em;
+   text-align: center;
+   font-size: 1.1em;
+   box-shadow: 0 0 10px #3fb0ac;
+}
+#save-button {
+   background-color: lightsteelblue;
+   border: none;
+   border-radius: .625em;
+   color: black;
+   padding: .313em .938em;
+   margin: .313em 1em;
+   text-align: center;
+   font-size: 1.1em;
+   display: none;
+}
+
+#close-button {
+   background-color: whitesmoke;
+   border: none;
+   color: black;
+   padding: 1em;
+   float: right;
+}
+
+#conceptviewheader {
+   display: flex;
+   justify-content: space-between;
+}
+
+pre {
+   font-size: 1.2em;
+}
+input[type="text"] {
+   font: normal 90% Verdana, Georgia, Helvetica, Times, serif;
+}
+input[type="submit"]:hover {
+   box-shadow: 0 0 .25em .125em lightgrey;
+}
+input[type="checkbox"] {
+   margin-left: 2em;
+   width: 1.25em;
+}
+input[type="file"] {
+   background-color: #3fb0ac;
+   border: none;
+   border-radius: .625em;
+   color: white;
+   padding: .3em .938em;
+   margin: 0 1em;
+   text-align: center;
+   font-size: 1.1em;
+}
+.nobullets {
+   list-style: none;
+   margin-left: 0;
+   padding-left: 1em;
+}
+
+#toomanyresults {
+   color: slategray;
+   font-style: italic;
+   font-size: .9em;
+   padding-left: 1em;
+}
+section {
+   margin: 1%;
+   padding: 0 2%;
+}
+section#main {
+   margin: 1%;
+}
+.matched {
+   background-color: whitesmoke;
+   border: none;
+   border-radius: .625em ;
+   margin: .5em 5%;
+}
+.matched ul {
+   list-style: none;
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: center;
+   margin: 0 5%;
+   padding: .313em;
+}
+.matched ul li {
+   padding: .313em;
+   color: darkslategray;
+}
+
+#voctable th {
+    padding: .313em;
+    text-align: left;
+}
+
+.numitem {
+   text-align: right;
+   padding-right: 2em;
+}
+
+#voctable {
+   width: 80%;
+   margin: 2%;
+}
+
+.vocname {
+   font-size: 1.3em;
+   font-weight: bold;
+   color: #3fb0ac;
+   padding: 2px;}
+
+/*
+#cloud0, #cloud0 li {
+   color: darkslategray;
+   padding: .2em;}
+*/
+#vocname0, #cloud0, #cloud0 li { color: darkviolet;}
+#vocname1, #cloud1, #cloud1 li { color: dodgerblue;}
+#vocname2, #cloud2, #cloud2 li { color: forestgreen;}
+#vocname3, #cloud3, #cloud3 li { color: tomato;}
+#vocname4, #cloud4, #cloud4 li { color: darkturquoise;}
+#vocname5, #cloud5, #cloud5 li { color: firebrick;}
+#vocname6, #cloud6, #cloud6 li { color: indigo;}
+#vocname7, #cloud7, #cloud7 li { color: darkgoldenrod;}
+#vocname8, #cloud8, #cloud8 li { color: seagreen;}
+#vocname9, #cloud9, #cloud9 li { color: turquoise;}
+
+.iconplus, .iconminus, .icondash {
+   padding-right: .5em;
+   color: seagreen;
+   opacity: 0.5;
+}
+/* .icondash {
+   opacity: 0.2;
+   font-size: .3em;
+}  */
+
+.font1 { font-size: 1em; }
+.font2 { font-size: 1.2em; }
+.font3 { font-size: 1.4em; }
+.font4 { font-size: 1.6em; }
+.font5 { font-size: 1.8em; }
+.font6 { font-size: 2.0em; }
+.font7 { font-size: 2.2em; }
+.font8 { font-size: 2.4em; }
+.font9 { font-size: 2.6em; }
+.font10 { font-size: 2.8em; }
+
+
+#parms {
+   display: none;
+   background-color: rgba(65, 105, 225, 0.05);  /* royal blue */
+   padding: 1em;
+   width: 50%;
+}
+#ok-button, #reset-button {
+   background-color: #b03f7b;
+   border: none;
+   border-radius: .625em;
+   color: white;
+   padding: .3em .938em;
+   margin: .5em 1em;
+   text-align: center;
+   font-size: 1.1em;
+}
+.step {
+   font-size: 1em;
+   color: white;
+   background-color: #b03f7b;
+   padding: .2em .4em;
+   margin-right: .6em;
+   border-radius: 50%;
+   border: 1px #b03f7b;
+}
+#slidericon {
+   color: #b03f7b;
+   font-size: 1.2em;
+   margin-left: 1em;
+}
+#mincharvalue, #maxwordsvalue, #minfreqvalue, #maxresultsvalue {
+   color: #b03f7b;
+   font-size: 1.1em;
+   font-weight: bold;
+}
+.usermsg {
+   color: red;
+   /* margin-left: 3em; */
+}
+#flex-container {
+   display: flex;
+   flex-direction: row;
+   flex-wrap: wrap;
+}
+#hierarchy {
+   flex: 1;
+}
+#details {
+   flex: 2;
+   background-color: whitesmoke;
+   border: none;
+   border-radius: .625em ;
+   display: none;
+}
+#conceptview {
+   font-size: .9em;
+   padding: .5em;
+}
+
+.indent { margin-left: 1em;}
+
+.linkedterm:hover {
+   background-color: paleturquoise;
+}
+#preflabel { background-color: #beebff; }
+.conceptattr { font-weight: bold; }
+
+footer {
+   padding: .4em;
+   margin-top: 1em;
+   width: 100%;
+   background-color: #3fb0ac;
+   text-align: center;
+   color: white;
+   font-size: .9em;
+}
+
+/* Modal window for metadata */
+/* Reference: https://codepen.io/chriscoyier/pen/BvdgL  */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* was fixed */
+    z-index: 1; /* Sit on top */
+    padding: 2%; /* Location of the box */
+    left: 70%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+    height: 50%;
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(176,196,222,0.6); /* Black w/ opacity */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 2%;
+    width: 95%;
+}
+.metaControls {
+   float: right;
+}
+.metaControls > i {
+   margin-left: 1em;
+}
+#metadataText {
+   font-size: .8em;
+}
+.fa-clipboard {
+   color: darkcyan;
+}
+.close {
+    color: darkslategray;
+    float: right;
+}
+
+/* testing................  */
+.fileContainer {
+    overflow: hidden;
+    position: relative;
+}
+
+.fileContainer [type=file] {
+    cursor: grab;
+    display: block;
+    font-size: 999px;
+    filter: alpha(opacity=0);
+    min-height: 100%;
+    min-width: 100%;
+    opacity: 0;
+    position: absolute;
+    right: 0;
+    text-align: left;
+    border-radius: .5em;
+    top: 0;
+}
+
+/* Example stylistic flourishes */
+
+.fileContainer {
+    background: paleturquoise;
+    border-radius: .5em;
+    float: left;
+    padding: .5em;
+}
+.selectedFileContainer {
+    background: whitesmoke;
+    border-radius: .5em;
+    float: left;
+    padding: .5em;
+    margin-left: 1em;
+}
+#selectedfilename {
+    display: inline;
+}
+
+/* Tooltip support. Source w3schools  ********************************************  */
+ /* Tooltip container */
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 20em;
+    background-color: #b03f7b;
+    color: #fff;
+    text-align: center;
+    padding: 5px;
+    border-radius: 6px;
+
+    /* Position the tooltip text */
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -60px;
+
+    /* Fade in tooltip */
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+/* Tooltip arrow */
+/* .tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+} */
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
